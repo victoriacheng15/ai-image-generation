@@ -1,0 +1,17 @@
+{
+  "name": "ai-image-gernation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "check": "pnpm rome check client/src server/",
+    "format": "pnpm rome format --write client/src server/",
+    "rome:run": "pnpm check && pnpm format"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "rome": "^11.0.0"
+  }
+}
