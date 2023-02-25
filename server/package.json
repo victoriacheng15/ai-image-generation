@@ -7,7 +7,7 @@
     "dev": "node --watch index.js",
     "start": "node index.js",
     "check": "pnpm rome check .",
-    "format": "pnpm rome format .",
+    "format": "pnpm rome --write format .",
     "rome:run": "pnpm check && pnpm format"
   },
   "keywords": [],
