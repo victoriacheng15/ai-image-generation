@@ -20,7 +20,7 @@ jobs:
 
       - name: install and run rome tool
         run: |
-          pnpm install rome
+          cd client && pnpm install rome
           pnpm rome:run
 
       - name: commit change
@@ -42,7 +42,7 @@ jobs:
 
       - name: install and run rome tool
         run: |
-          pnpm install rome
+          cd server && pnpm install rome
           pnpm rome:run
 
       - name: commit change
