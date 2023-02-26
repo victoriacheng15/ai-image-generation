@@ -44,8 +44,12 @@ function Home() {
 
 export default Home;
 
-function RenderCard({ data, title }: { data: any[] | string; title: string }) {
+// TODO:
+// remove ts-ignore later
+// @ts-ignore
+function RenderCard({ data, title }: { data: any[] | string; title: string }) { 
 	if (data?.length > 0) {
+		// @ts-ignore
 		return data.map((post) => <Card key={post._id} {...post} />);
 	}
 
