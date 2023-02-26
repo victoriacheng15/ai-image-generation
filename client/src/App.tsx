@@ -5,22 +5,22 @@ import logo from "./assets/logo.svg";
 function App() {
 	return (
 		<>
-			<header className="bg-blue-200 py-4">
-				<div className="w-11/12 mx-auto flex justify-between items-center">
+			<header className="py-4 bg-blue-200">
+				<div className="flex items-center justify-between w-11/12 mx-auto max-w-7xl">
 					<Link to="/">
-						<img src={logo} alt="logo" className="w-28 object-contain" />
+						<img src={logo} alt="logo" className="object-contain w-28" />
 					</Link>
 
 					<Link
 						to="/create-post"
-						className="font-inter font-medium bg-blue-900 text-slate-100 px-4 py-2 rounded-md"
+						className="px-4 py-2 font-medium bg-blue-900 rounded-md font-inter text-slate-100"
 					>
 						Create
 					</Link>
 				</div>
 			</header>
 			<main className="min-h-[calc(100vh-72px)] py-8">
-				<div className="w-11/12 mx-auto">
+				<div className="w-11/12 mx-auto max-w-7xl">
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/create-post" element={<CreatePost />} />
