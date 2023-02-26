@@ -31,7 +31,10 @@ function Home() {
 						)}
 						<div className="grid grid-cols-1 gap-4 lg:grid-cols-4 sm:grid-cols-4 xs:grid-cols-2">
 							{searchText ? (
-								<RenderCard data={searchedResults} title="No search results found" />
+								<RenderCard
+									data={searchedResults}
+									title="No search results found"
+								/>
 							) : (
 								<RenderCard data={allPosts} title="No posts found" />
 							)}
@@ -48,7 +51,7 @@ export default Home;
 // TODO:
 // remove ts-ignore later
 // rome-ignore lint/suspicious/noExplicitAny: <explanation>
-function  RenderCard({ data, title }: { data: any[] | string; title: string }) { 
+function RenderCard({ data, title }: { data: any[] | string; title: string }) {
 	if (data?.length > 0) {
 		// @ts-ignore
 		return data.map((post) => <Card key={post._id} {...post} />);
