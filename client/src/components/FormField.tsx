@@ -32,8 +32,8 @@ function FormField({
 	);
 
 	return (
-		<div className="flex items-center gap-2">
-			<div className="flex items-center gap-2">
+		<div>
+			<div className="flex items-center gap-2 mb-2">
 				<label htmlFor={name} className="text-base font-medium text-gray-700">
 					{label}
 				</label>
