@@ -5,7 +5,6 @@ import connectDB from "./config/connect.js";
 import postRoutes from "./routes/postRoutes.js";
 import dalleRoutes from "./routes/dalleRoutes.js";
 
-
 dotenv.config();
 
 const PROT = process.env.PROT || 8080;
