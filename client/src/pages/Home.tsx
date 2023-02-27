@@ -16,7 +16,7 @@ function Home() {
 			</p>
 			<div className="mt-16">
 				{/* @ts-ignore */}
-				<FormField />
+				<FormField label="Search image:" />
 			</div>
 			<div className="mt-10">
 				{loading ? (
