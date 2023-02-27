@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MdPreview } from "react-icons/md";
+import { VscPreview } from "react-icons/vsc";
 import { getRandomPrompt } from "../utils";
 import { FormField, Loader } from "../components";
 
 function CreatePost() {
 	const navigate = useNavigate();
-	const [form, setForm] = useState({
+	const formValues = {
 		name: "",
 		prompt: "",
 		photo: "",
-	});
-
+	};
+	const [form, setForm] = useState(formValues);
 	const [generatingImg, setGeneratingImg] = useState(false);
 	const [loading, setLoading] = useState(false);
+
+	function generateImage() {}
 
 	function handleSubmit() {
 		console.log("submit");
@@ -23,7 +25,10 @@ function CreatePost() {
 		setForm({ ...form, [e.target.name]: e.target.value });
 	}
 
-	function handleSurpriseMe() {}
+	function handleSurpriseMe() {
+		const randomPrompt = getRandomPrompt(form.prompt);
+		setForm({ ...form, prompt: randomPrompt });
+	}
 
 	return (
 		<section>
@@ -67,7 +72,7 @@ function CreatePost() {
 							//   alt="preview"
 							//   className="object-contain w-9/12 h-9/12 opacity-40"
 							// />
-							<MdPreview />
+							<VscPreview className="opacity-50" size="2x" />
 						)}
 
 						{generatingImg && (
@@ -81,7 +86,7 @@ function CreatePost() {
 				<div className="flex gap-5 mt-5">
 					<button
 						type="button"
-						// onClick={generateImage}
+						onClick={generateImage}
 						className=" text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
 					>
 						{generatingImg ? "Generating..." : "Generate"}
