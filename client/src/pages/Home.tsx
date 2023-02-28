@@ -7,6 +7,25 @@ function Home() {
 	const [searchText, setSearchText] = useState("");
 	const [searchedResults, setSearchedResults] = useState([]);
 
+	const fetchPosts = async () => {
+		try {
+			setLoading(true);
+			const res = await fetch(`${import.meta.env.VITE_BACKEND}/api/v1/posts`);
+			if (res.ok) {
+				const results = await res.json();
+				setAllPosts(results.data);
+			}
+		} catch (error) {
+			alert(error);
+		} finally {
+			setLoading(false);
+		}
+	};
+
+	useEffect(() => {
+		fetchPosts();
+	}, []);
+
 	return (
 		<section className="text-gray-900">
 			<h1 className="text-3xl font-extrabold">The Community Showcase</h1>
@@ -31,10 +50,7 @@ function Home() {
 						)}
 						<div className="grid grid-cols-1 gap-4 lg:grid-cols-4 sm:grid-cols-4 xs:grid-cols-2">
 							{searchText ? (
-								<RenderCard
-									data={searchedResults}
-									title="No search results found"
-								/>
+								<RenderCard data={allPosts} title="No search results found" />
 							) : (
 								<RenderCard data={allPosts} title="No posts found" />
 							)}

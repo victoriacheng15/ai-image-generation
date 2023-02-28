@@ -14,11 +14,58 @@ function CreatePost() {
 	const [form, setForm] = useState(formValues);
 	const [generatingImg, setGeneratingImg] = useState(false);
 	const [loading, setLoading] = useState(false);
+	const BACKEND = import.meta.env.VITE_BACKEND;
+	const API_PATH = "/api/v1";
+	const headers = {
+		"Content-Type": "application/json",
+	};
 
-	function generateImage() {}
+	async function generateImage() {
+		if (form.prompt) {
+			setGeneratingImg(true);
+			try {
+				const response = await fetch(`${BACKEND}${API_PATH}/dalle`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ prompt: form.prompt }),
+				});
 
-	function handleSubmit() {
-		console.log("submit");
+				const data = await response.json();
+				setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+			} catch (err) {
+				alert(err);
+			} finally {
+				setGeneratingImg(false);
+			}
+		} else {
+			alert("Please enter a prompt");
+		}
+	}
+
+	async function handleSubmit(e: { preventDefault: () => void }) {
+		e.preventDefault();
+
+		if (form.prompt && form.photo) {
+			setLoading(true);
+			try {
+				const res = await fetch(`${BACKEND}${API_PATH}/posts`, {
+					method: "POST",
+					headers,
+					body: JSON.stringify({ ...form }),
+				});
+
+				await res.json();
+				navigate("/");
+			} catch (error) {
+				alert(error);
+			} finally {
+				setLoading(false);
+			}
+		} else {
+			alert("Please enter a prompt and a photo");
+		}
 	}
 
 	function handleChange(e: { target: { name: string; value: string } }) {
