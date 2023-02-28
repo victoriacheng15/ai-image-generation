@@ -11,7 +11,7 @@ function Home() {
 		try {
 			setLoading(true);
 			const res = await fetch(`${import.meta.env.VITE_BACKEND}/api/v1/posts`);
-			if(res.ok) {
+			if (res.ok) {
 				const results = await res.json();
 				setAllPosts(results.data);
 			}
@@ -20,11 +20,11 @@ function Home() {
 		} finally {
 			setLoading(false);
 		}
-	}
+	};
 
 	useEffect(() => {
 		fetchPosts();
-	},[])
+	}, []);
 
 	return (
 		<section className="text-gray-900">
@@ -50,10 +50,7 @@ function Home() {
 						)}
 						<div className="grid grid-cols-1 gap-4 lg:grid-cols-4 sm:grid-cols-4 xs:grid-cols-2">
 							{searchText ? (
-								<RenderCard
-									data={allPosts}
-									title="No search results found"
-								/>
+								<RenderCard data={allPosts} title="No search results found" />
 							) : (
 								<RenderCard data={allPosts} title="No posts found" />
 							)}
