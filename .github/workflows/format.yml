@@ -29,7 +29,7 @@ jobs:
       - name: commit change
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "style: the code has been formatted by rome!"
+          commit_message: "style(client): the code has been formatted by rome!"
           branch: ${{ github.head_ref }}
   format-server:
     runs-on: ubuntu-latest
@@ -54,5 +54,5 @@ jobs:
       - name: commit change
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "style: the code has been formatted by rome!"
+          commit_message: "style(server): the code has been formatted by rome!"
           branch: ${{ github.head_ref }}
