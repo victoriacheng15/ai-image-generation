@@ -6,35 +6,29 @@ function Card({
 	name,
 	prompt,
 	photo,
-}: {
-	_id: string;
-	name: string;
-	prompt: string;
-	photo: string;
-}) {
+}: CardProps) {
 	return (
-		<div className="rounded-xl group relative shadow-card hover:shadow-cardhover card">
+		<article className="relative rounded-xl group shadow-card hover:shadow-cardhover card">
 			<img src={photo} alt={prompt} />
-			<div className="group-hover:flex flex-col max-h-[94.5%] hidden absolute bottom-0 left-0 right-0 bg-[#10131f] m-2 p-4 rounded-md">
-				<p className="text-white text-sm overflow-y-auto prompt">{prompt}</p>
-
-				<div className="mt-5 flex justify-between items-center gap-2">
+			<div className="group-hover:flex flex-col max-h-[94.5%] hidden absolute bottom-0 left-0 right-0 bg-gray-900 m-2 p-4 rounded-md">
+				<p className="overflow-y-auto text-sm text-white prompt">{prompt}</p>
+				<div className="flex items-center justify-between gap-2 mt-5">
 					<div className="flex items-center gap-2">
-						<div className="w-7 h-7 rounded-full object-cover bg-blue-700 flex justify-center items-center text-white text-xs font-bold">
+						<div className="flex items-center justify-center object-cover text-xs font-bold text-white bg-blue-700 rounded-full w-7 h-7">
 							{name[0]}
 						</div>
-						<p className="text-white text-sm">{name}</p>
+						<p className="text-sm text-white">{name}</p>
 					</div>
 					<button
 						type="button"
 						onClick={() => downloadImage(_id, photo)}
-						className="outline-none bg-transparent border-none"
+						className="bg-transparent border-none outline-none"
 					>
-						<AiOutlineDownload className="bg-blue-300 text-2xl rounded-full p-1" />
+						<AiOutlineDownload className="p-1 text-2xl bg-blue-300 rounded-full" />
 					</button>
 				</div>
 			</div>
-		</div>
+		</article>
 	);
 }
 
