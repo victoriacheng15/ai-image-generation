@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { VscPreview } from "react-icons/vsc";
 import { getRandomPrompt } from "../utils";
 import { FormField, Loader } from "../components";
+import { BACKEND, API_PATH, headers } from "../utils";
 
 function CreatePost() {
 	const navigate = useNavigate();
@@ -14,11 +15,6 @@ function CreatePost() {
 	const [form, setForm] = useState(formValues);
 	const [generatingImg, setGeneratingImg] = useState(false);
 	const [loading, setLoading] = useState(false);
-	const BACKEND = import.meta.env.VITE_BACKEND;
-	const API_PATH = "/api/v1";
-	const headers = {
-		"Content-Type": "application/json",
-	};
 
 	async function generateImage() {
 		setGeneratingImg(true);
@@ -26,9 +22,7 @@ function CreatePost() {
 			try {
 				const response = await fetch(`${BACKEND}${API_PATH}/dalle`, {
 					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
+					headers,
 					body: JSON.stringify({ prompt: form.prompt }),
 				});
 

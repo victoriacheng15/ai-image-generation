@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Loader, Card, FormField } from "../components";
+import { BACKEND, API_PATH } from "../utils";
 
 function Home() {
 	const [loading, setLoading] = useState(false);
@@ -11,7 +12,7 @@ function Home() {
 	const fetchPosts = async () => {
 		setLoading(true);
 		try {
-			const res = await fetch(`${import.meta.env.VITE_BACKEND}/api/v1/posts`);
+			const res = await fetch(`${BACKEND}${API_PATH}/posts`);
 			if (res.ok) {
 				const results = await res.json();
 				setAllPosts(results.data);
@@ -67,9 +68,9 @@ function Home() {
 			) : (
 				<>
 					{searchText && (
-						<h2 className="mb-3 text-xl font-medium my-4">
+						<h2 className="my-4 mb-3 text-xl font-medium">
 							Showing results for{" "}
-							<span className="text-green-500">{searchText}</span>{" "}
+							<span className="text-blue-800">{searchText}</span>{" "}
 						</h2>
 					)}
 					<section className="grid grid-cols-1 gap-4 lg:grid-cols-4 sm:grid-cols-4 xs:grid-cols-2">
