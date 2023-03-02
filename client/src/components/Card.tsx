@@ -1,12 +1,7 @@
 import { AiOutlineDownload } from "react-icons/ai";
 import { downloadImage } from "../utils";
 
-function Card({
-	_id,
-	name,
-	prompt,
-	photo,
-}: CardProps) {
+function Card({ _id, name, prompt, photo }: CardProps) {
 	return (
 		<article className="relative rounded-xl group shadow-card hover:shadow-cardhover card">
 			<img src={photo} alt={prompt} />

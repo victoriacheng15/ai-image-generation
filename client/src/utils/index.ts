@@ -5,7 +5,7 @@ export const BACKEND = import.meta.env.VITE_BACKEND;
 export const API_PATH = "/api/v1";
 export const headers = {
 	"Content-Type": "application/json",
-}
+};
 
 export function getRandomPrompt(prompt: string): string {
 	const randomIndex = Math.floor(Math.random() * surpriseMePrompts.length);
