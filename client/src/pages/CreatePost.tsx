@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { VscPreview } from "react-icons/vsc";
 import { getRandomPrompt } from "../utils";
@@ -21,8 +21,8 @@ function CreatePost() {
 	};
 
 	async function generateImage() {
+		setGeneratingImg(true);
 		if (form.prompt) {
-			setGeneratingImg(true);
 			try {
 				const response = await fetch(`${BACKEND}${API_PATH}/dalle`, {
 					method: "POST",
@@ -47,7 +47,7 @@ function CreatePost() {
 	async function handleSubmit(e: { preventDefault: () => void }) {
 		e.preventDefault();
 
-		if (form.prompt && form.photo) {
+		if (form.photo) {
 			setLoading(true);
 			try {
 				const res = await fetch(`${BACKEND}${API_PATH}/posts`, {
@@ -93,6 +93,7 @@ function CreatePost() {
 						placeholder="Ex., john doe"
 						value={form.name}
 						handleChange={handleChange}
+						required={true}
 					/>
 
 					<FormField
@@ -104,6 +105,7 @@ function CreatePost() {
 						handleChange={handleChange}
 						isSurpriseMe
 						handleSurpriseMe={handleSurpriseMe}
+						required={true}
 					/>
 
 					<div className="relative flex items-center justify-center w-64 h-64 p-3 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
@@ -114,11 +116,6 @@ function CreatePost() {
 								className="object-contain w-full h-full"
 							/>
 						) : (
-							// <img
-							//   src={preview}
-							//   alt="preview"
-							//   className="object-contain w-9/12 h-9/12 opacity-40"
-							// />
 							<VscPreview className="opacity-50" size="2x" />
 						)}
 
