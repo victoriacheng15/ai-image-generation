@@ -6,7 +6,7 @@ function App() {
 	return (
 		<>
 			<header className="py-4 bg-blue-200">
-				<div className="flex items-center justify-between w-11/12 mx-auto max-w-7xl">
+				<nav className="flex items-center justify-between w-11/12 mx-auto max-w-7xl">
 					<Link to="/">
 						<img src={logo} alt="logo" className="object-contain w-28" />
 					</Link>
@@ -17,15 +17,13 @@ function App() {
 					>
 						Create
 					</Link>
-				</div>
+				</nav>
 			</header>
-			<main className="min-h-[calc(100vh-72px)] py-8">
-				<div className="w-11/12 mx-auto max-w-7xl">
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/create-post" element={<CreatePost />} />
-					</Routes>
-				</div>
+			<main className="min-h-[calc(100vh-72px)] py-8 w-11/12 mx-auto max-w-7xl">
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/create-post" element={<CreatePost />} />
+				</Routes>
 			</main>
 		</>
 	);
