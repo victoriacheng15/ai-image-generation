@@ -22,7 +22,7 @@ function CreatePost() {
 
 	async function generateImage() {
 		setGeneratingImg(true);
-		if(form.prompt) {
+		if (form.prompt) {
 			try {
 				const response = await fetch(`${BACKEND}${API_PATH}/dalle`, {
 					method: "POST",
@@ -31,7 +31,7 @@ function CreatePost() {
 					},
 					body: JSON.stringify({ prompt: form.prompt }),
 				});
-	
+
 				const data = await response.json();
 				setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
 			} catch (err) {
