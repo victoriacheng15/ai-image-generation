@@ -8,9 +8,11 @@ function Home() {
 		useHome();
 
 	const title = (
-		<h2 className="text-2xl md:text-3xl font-extrabold">The Community Showcase</h2>
+		<h2 className="text-2xl md:text-3xl font-extrabold">
+			The Community Showcase
+		</h2>
 	);
-	
+
 	const paragraph = (
 		<p className="mt-2 text-base">
 			Browse through a collection if imaginative and visually stunning images
