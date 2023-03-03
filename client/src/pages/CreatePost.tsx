@@ -2,6 +2,7 @@ import { VscPreview } from "react-icons/vsc";
 import { useCreatePost } from "../hooks/useCreatePost";
 import FormField from "../components/FormField";
 import Loader from "../components/Loader";
+import GenerateButton from "../components/GenerateButton";
 
 function CreatePost() {
 	const {
@@ -16,7 +17,7 @@ function CreatePost() {
 
 	const { name, prompt, photo } = form;
 
-	const title = <h1 className="text-3xl font-extrabold">Create</h1>;
+	const title = <h2 className="text-2xl md:text-3xl font-extrabold">Create</h2>;
 	const paragraph = (
 		<p className="mt-2 text-base">
 			Create imaginative and visually stunning images through by DALLE-E AI and
@@ -31,7 +32,7 @@ function CreatePost() {
 	);
 
 	return (
-		<section>
+		<>
 			{title}
 			{paragraph}
 			<form className="mt-16" onSubmit={handleSubmit}>
@@ -40,12 +41,11 @@ function CreatePost() {
 						label="Your Name"
 						type="text"
 						name="name"
-						placeholder="Ex., john doe"
+						placeholder="Jane Doe"
 						value={name}
 						handleChange={handleChange}
 						required={true}
 					/>
-
 					<FormField
 						label="Prompt"
 						type="text"
@@ -53,8 +53,8 @@ function CreatePost() {
 						placeholder="An Impressionist oil painting of sunflowers in a purple vase…"
 						value={prompt}
 						handleChange={handleChange}
-						isSurpriseMe
 						handleSurpriseMe={handleSurpriseMe}
+						isSurpriseMe
 						required={true}
 					/>
 
@@ -74,29 +74,27 @@ function CreatePost() {
 				</div>
 
 				<div className="flex gap-5 mt-5">
-					<button
-						type="button"
+					<GenerateButton
+						hasPrompt={prompt}
+						btnText="Generate"
 						onClick={generateImage}
-						className=" text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-					>
-						{generatingImg ? "Generating..." : "Generate"}
-					</button>
+					/>
 				</div>
 
 				<div className="mt-10">
-					<p className="mt-2 text-[#666e75] text-[14px]">
+					<p className="my-2 text-gray-500 text-sm">
 						** Once you have created the image you want, you can share it with
 						others in the community **
 					</p>
 					<button
 						type="submit"
-						className="mt-3 text-white bg-[#6469ff] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+						className="text-slate-100 bg-blue-900 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
 					>
 						{loading ? "Sharing..." : "Share with the Community"}
 					</button>
 				</div>
 			</form>
-		</section>
+		</>
 	);
 }
 
