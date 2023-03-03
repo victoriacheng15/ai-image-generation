@@ -1,5 +1,6 @@
 import { Link, Route, Routes } from "react-router-dom";
-import { CreatePost, Home } from "./pages";
+import Home from "./pages/Home";
+import CreatePost from "./pages/CreatePost";
 import logo from "./assets/logo.svg";
 
 function App() {
