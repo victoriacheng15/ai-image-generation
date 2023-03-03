@@ -13,27 +13,23 @@ export function useCreatePost() {
 	const [generatingImg, setGeneratingImg] = useState(false);
 	const [loading, setLoading] = useState(false);
 
-  const FULL_URL = `${BACKEND}${API_PATH}`;
+	const FULL_URL = `${BACKEND}${API_PATH}`;
 
 	async function generateImage() {
 		setGeneratingImg(true);
-		if (form.prompt) {
-			try {
-				const response = await fetch(`${FULL_URL}/dalle`, {
-					method: "POST",
-					headers,
-					body: JSON.stringify({ prompt: form.prompt }),
-				});
+		try {
+			const response = await fetch(`${FULL_URL}/dalle`, {
+				method: "POST",
+				headers,
+				body: JSON.stringify({ prompt: form.prompt }),
+			});
 
-				const data = await response.json();
-				setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
-			} catch (err) {
-				alert(err);
-			} finally {
-				setGeneratingImg(false);
-			}
-		} else {
-			alert("Please enter a prompt");
+			const data = await response.json();
+			setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+		} catch (err) {
+			alert(err);
+		} finally {
+			setGeneratingImg(false);
 		}
 	}
 
@@ -57,7 +53,7 @@ export function useCreatePost() {
 				setLoading(false);
 			}
 		} else {
-			alert("Please enter a prompt and a photo");
+			alert("Please make sure there is a photo");
 		}
 	}
 
@@ -73,11 +69,8 @@ export function useCreatePost() {
 
 	return {
 		form,
-		setForm,
 		generatingImg,
-		setGeneratingImg,
 		loading,
-		setLoading,
 		handleChange,
 		handleSubmit,
 		handleSurpriseMe,
