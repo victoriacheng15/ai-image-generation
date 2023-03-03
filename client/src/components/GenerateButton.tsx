@@ -18,7 +18,7 @@ function GenerateButton({
 					type="button"
 					onClick={onClick}
 					className="text-slate-100 bg-blue-500 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-          disabled
+					disabled
 				>
 					{btnText}
 				</button>
