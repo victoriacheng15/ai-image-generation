@@ -1,83 +1,39 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { VscPreview } from "react-icons/vsc";
-import { getRandomPrompt } from "../utils";
-import { FormField, Loader } from "../components";
-import { BACKEND, API_PATH, headers } from "../utils";
+import { useCreatePost } from "../hooks/useCreatePost";
+import FormField from "../components/FormField";
+import Loader from "../components/Loader";
 
 function CreatePost() {
-	const navigate = useNavigate();
-	const formValues = {
-		name: "",
-		prompt: "",
-		photo: "",
-	};
-	const [form, setForm] = useState(formValues);
-	const [generatingImg, setGeneratingImg] = useState(false);
-	const [loading, setLoading] = useState(false);
+	const {
+		form,
+		generatingImg,
+		loading,
+		handleChange,
+		handleSubmit,
+		handleSurpriseMe,
+		generateImage,
+	} = useCreatePost();
 
-	async function generateImage() {
-		setGeneratingImg(true);
-		if (form.prompt) {
-			try {
-				const response = await fetch(`${BACKEND}${API_PATH}/dalle`, {
-					method: "POST",
-					headers,
-					body: JSON.stringify({ prompt: form.prompt }),
-				});
+	const { name, prompt, photo } = form;
 
-				const data = await response.json();
-				setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
-			} catch (err) {
-				alert(err);
-			} finally {
-				setGeneratingImg(false);
-			}
-		} else {
-			alert("Please enter a prompt");
-		}
-	}
+	const title = <h1 className="text-3xl font-extrabold">Create</h1>;
+	const paragraph = (
+		<p className="mt-2 text-base">
+			Create imaginative and visually stunning images through by DALLE-E AI and
+			share them with the community
+		</p>
+	);
 
-	async function handleSubmit(e: { preventDefault: () => void }) {
-		e.preventDefault();
-
-		if (form.photo) {
-			setLoading(true);
-			try {
-				const res = await fetch(`${BACKEND}${API_PATH}/posts`, {
-					method: "POST",
-					headers,
-					body: JSON.stringify({ ...form }),
-				});
-
-				await res.json();
-				navigate("/");
-			} catch (error) {
-				alert(error);
-			} finally {
-				setLoading(false);
-			}
-		} else {
-			alert("Please enter a prompt and a photo");
-		}
-	}
-
-	function handleChange(e: { target: { name: string; value: string } }) {
-		setForm({ ...form, [e.target.name]: e.target.value });
-	}
-
-	function handleSurpriseMe() {
-		const randomPrompt = getRandomPrompt(form.prompt);
-		setForm({ ...form, prompt: randomPrompt });
-	}
+	const generatingImage = generatingImg && (
+		<div className="absolute inset-0 z-0 flex items-center justify-center rounded-lg">
+			<Loader />
+		</div>
+	);
 
 	return (
 		<section>
-			<h1 className="text-3xl font-extrabold">Create</h1>
-			<p className="mt-2 text-base">
-				Create imaginative and visually stunning images through by DALLE-E AI
-				and share them with the community
-			</p>
+			{title}
+			{paragraph}
 			<form className="mt-16" onSubmit={handleSubmit}>
 				<div className="flex flex-col gap-5">
 					<FormField
@@ -85,7 +41,7 @@ function CreatePost() {
 						type="text"
 						name="name"
 						placeholder="Ex., john doe"
-						value={form.name}
+						value={name}
 						handleChange={handleChange}
 						required={true}
 					/>
@@ -95,7 +51,7 @@ function CreatePost() {
 						type="text"
 						name="prompt"
 						placeholder="An Impressionist oil painting of sunflowers in a purple vase…"
-						value={form.prompt}
+						value={prompt}
 						handleChange={handleChange}
 						isSurpriseMe
 						handleSurpriseMe={handleSurpriseMe}
@@ -103,21 +59,17 @@ function CreatePost() {
 					/>
 
 					<div className="relative flex items-center justify-center w-64 h-64 p-3 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-						{form.photo ? (
+						{photo ? (
 							<img
-								src={form.photo}
-								alt={form.prompt}
+								src={photo}
+								alt={prompt}
 								className="object-contain w-full h-full"
 							/>
 						) : (
-							<VscPreview className="opacity-50" size="2x" />
+							<VscPreview className="w-full h-full opacity-50" />
 						)}
 
-						{generatingImg && (
-							<div className="absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg">
-								<Loader />
-							</div>
-						)}
+						{generatingImage}
 					</div>
 				</div>
 

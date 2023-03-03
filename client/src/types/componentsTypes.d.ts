@@ -16,3 +16,9 @@ interface CardProps {
 	prompt: string;
 	photo: string;
 }
+
+
+interface RenderCardProp{
+	data: PostResponse[]; 
+	title: string
+}
