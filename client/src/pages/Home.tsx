@@ -10,7 +10,7 @@ function Home() {
 	const title = (
 		<h1 className="text-3xl font-extrabold">The Community Showcase</h1>
 	);
-	
+
 	const paragraph = (
 		<p className="mt-2 text-base">
 			Browse through a collection if imaginative and visually stunning images

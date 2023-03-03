@@ -17,8 +17,7 @@ interface CardProps {
 	photo: string;
 }
 
-
-interface RenderCardProp{
-	data: PostResponse[]; 
-	title: string
+interface RenderCardProp {
+	data: PostResponse[];
+	title: string;
 }

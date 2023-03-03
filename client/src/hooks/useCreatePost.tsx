@@ -13,7 +13,7 @@ export function useCreatePost() {
 	const [generatingImg, setGeneratingImg] = useState(false);
 	const [loading, setLoading] = useState(false);
 
-  const FULL_URL = `${BACKEND}${API_PATH}`;
+	const FULL_URL = `${BACKEND}${API_PATH}`;
 
 	async function generateImage() {
 		setGeneratingImg(true);
