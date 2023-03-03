@@ -8,7 +8,7 @@ function Home() {
 		useHome();
 
 	const title = (
-		<h1 className="text-3xl font-extrabold">The Community Showcase</h1>
+		<h2 className="text-2xl md:text-3xl font-extrabold">The Community Showcase</h2>
 	);
 	
 	const paragraph = (
@@ -22,7 +22,7 @@ function Home() {
 		<>
 			{title}
 			{paragraph}
-			<div className="mt-16 mb-8">
+			<div className="my-10">
 				<FormField
 					label="Search posts:"
 					type="text"
@@ -37,12 +37,12 @@ function Home() {
 			) : (
 				<>
 					{searchText && (
-						<h2 className="my-4 mb-3 text-xl font-medium">
+						<h3 className="my-4 text-xl font-medium">
 							Showing results for{" "}
 							<span className="text-blue-800">{searchText}</span>{" "}
-						</h2>
+						</h3>
 					)}
-					<section className="grid grid-cols-1 gap-4 lg:grid-cols-4 sm:grid-cols-4 xs:grid-cols-2">
+					<section className="grid gap-4 grid-cols-1 sm:grid-cols-3">
 						{searchText ? (
 							<RenderCard
 								data={searchedResults}
