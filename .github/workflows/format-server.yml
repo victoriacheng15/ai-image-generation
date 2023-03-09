@@ -1,38 +1,15 @@
-name: format
+name: format server
 
 on:
+  push:
+    paths: [server/**]
+    branches: [main]
   pull_request:
-    paths:
-      - client/
+    paths: [server/**]
     branches: [main]
   workflow_dispatch:
 
 jobs:
-  format-client:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.head_ref }}
-          token: ${{ secrets.PAT }}
-      - uses: pnpm/action-setup@v2
-        with:
-          version: latest
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: "pnpm"
-
-      - name: install and run rome tool
-        run: |
-          cd client && pnpm install rome
-          pnpm rome:run
-
-      - name: commit change
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "style(client): the code has been formatted by rome!"
-          branch: ${{ github.head_ref }}
   format-server:
     runs-on: ubuntu-latest
     steps:
