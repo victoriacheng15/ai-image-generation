@@ -11,7 +11,7 @@ cloudinary.config({
 });
 
 export async function getAllPosts(req, res) {
-  try {
+	try {
 		const posts = await Post.find();
 		res.status(200).json({ success: true, data: posts });
 	} catch (error) {
@@ -20,7 +20,7 @@ export async function getAllPosts(req, res) {
 }
 
 export async function createPost(req, res) {
-  try {
+	try {
 		const { name, prompt, photo } = req.body;
 		const photoUrl = await cloudinary.uploader.upload(photo, {
 			folder: "posts",
