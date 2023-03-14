@@ -1,9 +1,6 @@
 name: format client
 
 on:
-  push:
-    paths: [client/**]
-    branches: [main]
   pull_request:
     paths: [client/**]
     branches: [main]
