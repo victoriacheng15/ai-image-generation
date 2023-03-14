@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "check": "pnpm rome check client/src server/",
-    "format": "pnpm rome format --write client/src server/",
-    "rome:run": "pnpm check && pnpm format"
+    "start:server": "cd client && pnpm dev",
+    "start:client": "cd server && pnpm dev",
+    "start": "concurrently pnpm:start:*"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "rome": "^11.0.0"
+    "concurrently": "^7.6.0"
   }
 }
