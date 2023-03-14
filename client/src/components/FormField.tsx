@@ -12,7 +12,7 @@ function FormField({
 	const surpriseMeBtn = isSurpriseMe && (
 		<button
 			type="button"
-			className="px-2 py-1 text-sm font-semibold bg-blue-900 text-slate-100 rounded-md"
+			className="px-2 py-1 text-sm font-semibold bg-blue-900 rounded-md text-slate-100"
 			onClick={handleSurpriseMe}
 		>
 			Surprise me

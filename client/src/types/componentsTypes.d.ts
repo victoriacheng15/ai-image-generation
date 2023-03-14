@@ -21,3 +21,8 @@ interface RenderCardProp {
 	data: PostResponse[];
 	title: string;
 }
+
+interface SocialProps {
+	icon: React.ReactNode;
+	href: string;
+}
