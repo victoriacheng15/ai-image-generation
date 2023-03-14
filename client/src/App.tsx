@@ -2,6 +2,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import CreatePost from "./pages/CreatePost";
 import logo from "./assets/logo.svg";
+import Footer from "./components/Footer";
 
 function App() {
 	return (
@@ -20,12 +21,13 @@ function App() {
 					</Link>
 				</nav>
 			</header>
-			<main className="min-h-[calc(100vh-72px)] py-8 w-11/12 mx-auto max-w-7xl">
+			<main className="w-11/12 py-8 mx-auto max-w-7xl">
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/create-post" element={<CreatePost />} />
 				</Routes>
 			</main>
+			<Footer />
 		</>
 	);
 }
