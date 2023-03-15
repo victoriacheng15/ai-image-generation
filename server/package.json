@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "node --watch src/index.js",
     "start": "node src/index.js",
-    "check": "pnpm rome check .",
-    "format": "pnpm rome format --write .",
+    "check": "pnpm rome check src/",
+    "format": "pnpm rome format --write src/",
     "rome:run": "pnpm check && pnpm format"
   },
   "keywords": [],
