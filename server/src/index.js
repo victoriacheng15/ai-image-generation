@@ -17,6 +17,10 @@ app.use(express.json({ limit: "50mb" }));
 app.use(`${API_V1}/posts`, v1PostRoutes);
 app.use(`${API_V1}/dalle`, v1DalleRoutes);
 
+app.get("/", (req, res) => {
+	res.send("<a href=\"/api/v1/posts\">Go to API</a>");
+});
+
 (async function startServer() {
 	try {
 		await connectDB(process.env.MONGO_URI);
