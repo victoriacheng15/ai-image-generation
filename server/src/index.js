@@ -8,7 +8,7 @@ import v1DalleRoutes from "./v1/routes/dalleRoutes.js";
 dotenv.config();
 
 const PROT = process.env.PROT || 8080;
-const API_V1 = "/api/v1"
+const API_V1 = "/api/v1";
 
 const app = express();
 app.use(cors());
