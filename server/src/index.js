@@ -2,23 +2,20 @@ import express from "express";
 import * as dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/connect.js";
-import postRoutes from "./routes/postRoutes.js";
-import dalleRoutes from "./routes/dalleRoutes.js";
+import v1PostRoutes from "./v1/routes/postRoutes.js";
+import v1DalleRoutes from "./v1/routes/dalleRoutes.js";
 
 dotenv.config();
 
 const PROT = process.env.PROT || 8080;
+const API_V1 = "/api/v1"
 
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 
-app.use("/api/v1/posts", postRoutes);
-app.use("/api/v1/dalle", dalleRoutes);
-
-app.get("/", async (req, res) => {
-	res.send("Hello from DALL-E");
-});
+app.use(`${API_V1}/posts`, v1PostRoutes);
+app.use(`${API_V1}/dalle`, v1DalleRoutes);
 
 (async function startServer() {
 	try {
