@@ -4,6 +4,7 @@ import cors from "cors";
 import connectDB from "./config/connect.js";
 import v1PostRoutes from "./v1/routes/postRoutes.js";
 import v1DalleRoutes from "./v1/routes/dalleRoutes.js";
+import { apiLimiter } from "./middleware/ApiRateLimit.js";
 
 dotenv.config();
 
@@ -14,8 +15,8 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 
-app.use(`${API_V1}/posts`, v1PostRoutes);
-app.use(`${API_V1}/dalle`, v1DalleRoutes);
+app.use(`${API_V1}/posts`, apiLimiter, v1PostRoutes);
+app.use(`${API_V1}/dalle`, apiLimiter, v1DalleRoutes);
 
 app.get("/", (req, res) => {
 	res.send('<a href="/api/v1/posts">Go to API</a>');

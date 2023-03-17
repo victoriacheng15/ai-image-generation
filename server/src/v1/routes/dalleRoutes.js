@@ -3,6 +3,6 @@ import { generateImage } from "../controllers/dalleController.js";
 
 const router = express.Router();
 
-router.route("/").post(generateImage);
+router.post("/", generateImage);
 
 export default router;
