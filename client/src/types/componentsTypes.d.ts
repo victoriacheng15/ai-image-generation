@@ -25,4 +25,5 @@ interface RenderCardProp {
 interface SocialProps {
 	icon: React.ReactNode;
 	href: string;
+	label: string;
 }

@@ -4,7 +4,16 @@ import { downloadImage } from "../utils";
 function Card({ _id, name, prompt, photo }: CardProps) {
 	return (
 		<article className="relative rounded-xl group shadow-card hover:shadow-cardhover card">
-			<img src={photo} alt={prompt} />
+			<div className="max-w-full h-full">
+				<img
+					className="w-full h-auto object-cover"
+					width={1024}
+					height={1024}
+					src={photo}
+					alt={prompt}
+					loading="lazy"
+				/>
+			</div>
 			<div className="group-hover:flex flex-col max-h-[94.5%] hidden absolute bottom-0 left-0 right-0 bg-gray-900 m-2 p-4 rounded-md">
 				<p className="overflow-y-auto text-sm text-white prompt">{prompt}</p>
 				<div className="flex items-center justify-between gap-2 mt-5">
