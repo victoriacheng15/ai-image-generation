@@ -31,7 +31,7 @@ function Footer() {
 
 export default Footer;
 
-function Social({ icon, href, label}: SocialProps) {
+function Social({ icon, href, label }: SocialProps) {
 	return (
 		<a
 			className="duration-300 ease-in-out hover:text-blue-900"
