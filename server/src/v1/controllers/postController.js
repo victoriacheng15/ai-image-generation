@@ -29,7 +29,7 @@ export async function createPost(req, res) {
 		const newPost = new Post({
 			name,
 			prompt,
-			photo: photoUrl.url,
+			photo: photoUrl.secure_url,
 		});
 
 		await newPost.save();
