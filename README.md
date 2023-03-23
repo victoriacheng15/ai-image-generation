@@ -23,8 +23,6 @@ Users should be able to do:
 
 ## Screenshots/GIFs
 
-## Screenshot/GIFs
-
 <details close>
 <summary>Overall Demo</summary>
 
