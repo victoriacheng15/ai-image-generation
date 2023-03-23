@@ -21,6 +21,41 @@ Users should be able to do:
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6.svg?style=for-the-badge&logo=TypeScript&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black) ![React Router](https://img.shields.io/badge/React%20Router-CA4245.svg?style=for-the-badge&logo=React-Router&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white) ![node js](https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white) ![express](https://img.shields.io/badge/Express-000000.svg?style=for-the-badge&logo=Express&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-47A248.svg?style=for-the-badge&logo=MongoDB&logoColor=white)
 
+## Screenshots/GIFs
+
+## Screenshot/GIFs
+
+<details close>
+<summary>Overall Demo</summary>
+
+Each image will show what prompt was used to create, the submitted name, and a download image button when hovering.
+
+https://user-images.githubusercontent.com/35031228/227278329-7d7d2043-2de2-4979-a532-dc6f488fc06a.mp4
+
+</details>
+
+<hr />
+
+<details close>
+<summary>Search Demo</summary>
+
+https://user-images.githubusercontent.com/35031228/227278333-259efb5b-061b-4077-8c14-d189f7af4e14.mp4
+
+</details>
+
+<hr />
+
+<details close>
+<summary>Create an AI-generated Image based on the prompt</summary>
+
+If dislike the first generated image, can click the generate button and then sharing with the community!
+
+https://user-images.githubusercontent.com/35031228/227278335-d7190e68-19e2-4202-9b87-0466b9bf4ecf.mp4
+
+</details>
+
+<hr />
+
 ## Installation
 
 ```bash
